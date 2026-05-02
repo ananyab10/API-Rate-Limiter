@@ -28,47 +28,27 @@ Every incoming request passes through a middleware layer that checks a Redis cou
 
 ```
 
+
+
 Incoming Request
-
-&#x20;     │
-
-&#x20;     ▼
-
+      │
+      ▼
 ┌─────────────────┐
-
 │  Rate Limiter   │  ← middleware in index.js checks Redis counter for IP
-
 │  Middleware     │
-
 └─────────────────┘
-
-&#x20;       │
-
-&#x20;  Under limit?
-
-&#x20;  ┌────┴────┐
-
-&#x20; Yes        No
-
-&#x20;  │          │
-
-&#x20;  ▼          ▼
-
+        │
+   Under limit?
+   ┌────┴────┐
+  Yes        No
+   │          │
+   ▼          ▼
 Route      429 Error
-
 Handler    returned
-
-&#x20;  │
-
-&#x20;  ▼
-
+   │
+   ▼
 Redis counter
-
 incremented
-
-```
-
-
 
 \---
 
