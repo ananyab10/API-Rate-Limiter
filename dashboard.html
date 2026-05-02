@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Rate Limiter Dashboard</h1>
+  <table id="stats-table" border="1">
+    <tr>
+      <th>IP Address</th>
+      <th>Request Count</th>
+      <th>Status</th>
+    </tr>
+  </table>
+
+  <script>
+    async function fetchStats() {
+      const response = await fetch('/admin/stats')
+      const data = await response.json()
+      
+      const table = document.getElementById('stats-table')
+      table.innerHTML = '<tr><th>IP Address</th><th>Request Count</th><th>Status</th></tr>'
+      
+      for (const [ip, count] of Object.entries(data)) {
+        const row = document.createElement('tr')
+        row.innerHTML = `<td>${ip}</td><td>${count}</td><td>${count > 10 ? 'BLOCKED' : 'OK'}</td>`
+        table.appendChild(row)
+      }
+    }
+
+    setInterval(fetchStats, 2000)
+    fetchStats()
+  </script>
+</body>
+</html>
