@@ -262,11 +262,10 @@ X-RateLimit-Reset: 1716300060
 
 {
 
-&#x20; "error": "Too Many Requests",
+  "error": "Too Many Requests",
+  "message": "Rate limit exceeded. Try again in 43 seconds.",
+  "retryAfter": 43
 
-&#x20; "message": "Rate limit exceeded. Try again in 43 seconds.",
-
-&#x20; "retryAfter": 43
 
 }
 
