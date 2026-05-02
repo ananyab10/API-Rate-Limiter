@@ -50,12 +50,12 @@ Handler    returned
 Redis counter
 incremented
 
+
 \---
 
-
+```
 
 \## Project Structure
-
 
 
 ```
